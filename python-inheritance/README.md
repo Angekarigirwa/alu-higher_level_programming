@@ -1,2 +1,1 @@
-Inheritance
-Inheritance in python
+this is my readme for this project
