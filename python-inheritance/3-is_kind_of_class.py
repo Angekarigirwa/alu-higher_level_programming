@@ -8,4 +8,4 @@ def is_kind_of_class(obj, a_class):
     """check if the object is an instance of
     class and turns true otherwise false"""
 
-    return isinstance(obj, a_class
+    return isinstance(obj, a_class)
