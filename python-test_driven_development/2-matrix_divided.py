@@ -1,46 +1,18 @@
-#!/usr/bin/python3
-"""
-    matrix division module
-"""
+#!/usr/bin/pyhthon3
+"""unittest module"""
 
+import unittest
 
-def matrix_divided(matrix, div):
-    """ Takes a matrix and divides the values by 'div'.
+max_integer = __import__('6-max_integer').max_integer
 
-    Args:
-        matrix (:obj:'list' of :obj:'list'): lists of lists of integers/floats.
-        div (int or float): The divisor.
-    """
-    row_len = -1
-    if type(div) is not int and type(div) is not float:
-        raise TypeError("div must be a number")
-    if div == 0:
-        raise ZeroDivisionError("division by zero")
+class TestMax(unittest.TestCase):
+    """test max"""
 
-    if type(matrix) != list or len(matrix) == 0:
-        raise TypeError("matrix must be a matrix (list of lists) of integers/"
-                        "floats")
-
-    new_matrix = []
-    for row in matrix:
-        if type(row) is not list:
-            raise TypeError("matrix must be a matrix (list of lists) of "
-                            "integers/floats")
-        if row_len == -1:
-            row_len = len(row)
-            if row_len == 0:
-                raise TypeError("matrix must be a matrix (list of lists) of "
-                                "integers/floats")
-        else:
-            if row_len is not len(row):
-                raise TypeError("Each row of the matrix must have the same "
-                                "size")
-        new_row = []
-        for ele in row:
-            if type(ele) is int or type(ele) is float:
-                new_row.append(round(ele / div, 2))
-            else:
-                raise TypeError("matrix must be a matrix (list of lists) of "
-                                "integers/floats")
-        new_matrix.append(new_row)
-    return new_matrix
+    def test_max(self):
+        """test max function"""
+        self.assertEqual(max_integer([2,1,3]), 3)
+        self.assertEqual(max_integer([-3,-4,-1]), -1)
+        self.assertEqual(max_integer([]), None)
+        self.assertEqual(max_integer([9]), 9)
+        self.assertEqual(max_integer([3,4,1]), 4)
+        self.assertEqual(max_integer([8,4,1,3]), 8)
