@@ -1,18 +1,20 @@
-#!/usr/bin/pyhthon3
-"""unittest module"""
+#!/usr/bin/python3
+"""function divides all elments of matrix"""
 
-import unittest
 
-max_integer = __import__('6-max_integer').max_integer
-
-class TestMax(unittest.TestCase):
-    """test max"""
-
-    def test_max(self):
-        """test max function"""
-        self.assertEqual(max_integer([2,1,3]), 3)
-        self.assertEqual(max_integer([-3,-4,-1]), -1)
-        self.assertEqual(max_integer([]), None)
-        self.assertEqual(max_integer([9]), 9)
-        self.assertEqual(max_integer([3,4,1]), 4)
-        self.assertEqual(max_integer([8,4,1,3]), 8)
+def matrix_divided(matrix, div):
+    """divides elments of matrix"""
+    if type(div) != float and type(div) != int:
+        error1 = 'div must be a number'
+        raise TypeError(error1)
+    for i in matrix:
+        if len(i) != len(matrix[0]):
+            error2 = 'Each row of the matrix must have the same size'
+            raise TypeError(error2)
+    try:
+        return [[round(k / div, 2) for k in j] for j in matrix]
+    except TypeError:
+        error3 = 'matrix must be a matrix (list of lists) of integers/floats'
+        raise TypeError(error3)
+    except ZeroDivisionError:
+        raise ZeroDivisionError('division by zero')
